@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">XYO Android Core Sample</string>
+    <string name="test_logging">Test Logging</string>
+</resources>
