@@ -8,11 +8,14 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:$android_plugin_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.XYOracleNetwork'
 
 kotlin {
     experimental {
@@ -28,7 +31,6 @@ android {
         minSdkVersion 19
         targetSdkVersion 27
         defaultPublishConfig 'release'
-        publishNonDefault true
     }
 
     buildTypes {

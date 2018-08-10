@@ -33,4 +33,6 @@
 
 -keep public class network.xyo.** { *; }
 
+-dontwarn java.lang.invoke.**
+
 -verbose
