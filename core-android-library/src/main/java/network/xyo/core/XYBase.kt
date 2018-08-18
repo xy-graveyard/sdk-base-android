@@ -62,6 +62,7 @@ open class XYBase {
 
         fun logError(module: String, message: String, debug: Boolean) {
             Log.e(module, message)
+            Log.e(module, Thread.currentThread()?.stackTrace?.contentToString()?.replace(", ", ",\r\n") ?: "Unknown Thread")
             if (debug) {
                 throw RuntimeException()
             }
@@ -87,6 +88,7 @@ open class XYBase {
         //Errors are conditions that should not occur but did.  These can include bad states,
         //or failed internet calls for example
         fun logError(module: String, function: String, message: String, debug: Boolean) {
+            logError(module, "$function:$message:${Thread.currentThread().name}", true)
             if (debug && isDebug()) {
                 throw RuntimeException()
             }

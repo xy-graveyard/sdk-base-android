@@ -70,7 +70,7 @@ class XYPermissions(private val activity: Activity) : XYBase() {
                 alertDialog.setTitle("Permission Needed")
                 alertDialog.setMessage(explainText)
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
-                ) { dialog, which ->
+                ) { dialog, _ ->
                     dialog.dismiss()
                     ActivityCompat.requestPermissions(activity,
                             permissions,
