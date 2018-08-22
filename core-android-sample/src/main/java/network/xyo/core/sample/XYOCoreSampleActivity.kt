@@ -8,14 +8,13 @@ import network.xyo.core.XYBase
 class XYOCoreSampleActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        XYBase.init(this)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_xyo_core_sample)
 
         btnTestLogging.setOnClickListener {
             XYBase.logError(TAG, "logError Test", false)
-            XYBase.logException(TAG, Exception("XYOCoreSampleActivity Test Exception"), false)
+            XYBase.logError(TAG, Exception("XYOCoreSampleActivity Test Exception"), false)
             XYBase.logAction(TAG, "logAction Test")
             XYBase.logError(TAG, "logError", false)
             XYBase.logExtreme(TAG, "logExtreme Test")
