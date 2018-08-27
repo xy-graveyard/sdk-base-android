@@ -52,7 +52,7 @@ open class XYBase {
 
     companion object {
 
-        fun classNameFromObject(objectToCheck: Any) : String {
+        fun classNameFromObject(objectToCheck: Any): String {
             val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.')
             if (parts == null) {
                 return "Unknown"
@@ -60,13 +60,14 @@ open class XYBase {
             return parts[parts.lastIndex]
         }
 
-        fun sourceNameFromAny(source: Any) : String {
+        fun sourceNameFromAny(source: Any): String {
             return (source as? String) ?: classNameFromObject(source)
         }
 
         fun logError(source: Any, message: String, debug: Boolean) {
             Log.e(sourceNameFromAny(source), message)
-            Log.e(sourceNameFromAny(source), Thread.currentThread().stackTrace?.contentToString()?.replace(", ", ",\r\n") ?: "Unknown Thread")
+            Log.e(sourceNameFromAny(source), Thread.currentThread().stackTrace?.contentToString()?.replace(", ", ",\r\n")
+                    ?: "Unknown Thread")
             if (debug) {
                 throw RuntimeException()
             }
