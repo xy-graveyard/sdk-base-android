@@ -53,10 +53,7 @@ open class XYBase {
     companion object {
 
         fun classNameFromObject(objectToCheck: Any): String {
-            val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.')
-            if (parts == null) {
-                return "Unknown"
-            }
+            val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.') ?: return "Unknown"
             return parts[parts.lastIndex]
         }
 
@@ -84,7 +81,7 @@ open class XYBase {
 
         fun logError(source: Any, ex: Throwable, reThrow: Boolean) {
             Log.e(sourceNameFromAny(source), classNameFromObject(ex))
-            Log.e(sourceNameFromAny(source), ex.stackTrace.contentToString().replace(", ", ",\r\n"))
+            Log.e(sourceNameFromAny(source), ex.stackTrace!!.contentToString().replace(", ", ",\r\n"))
             if (isDebug()) {
                 if (reThrow) {
                     throw RuntimeException(ex)
