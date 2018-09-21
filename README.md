@@ -3,7 +3,7 @@
 ![logo]
 
 # XY Core Android Library (sdk-core-android)
-[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-core-android?branch=master)](https://bettercodehub.com/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-core-android?branch=master)](https://bettercodehub.com/results/XYOracleNetwork/sdk-core-android)
 
 An XYO inspired utility framework for Android and Kotlin
 
