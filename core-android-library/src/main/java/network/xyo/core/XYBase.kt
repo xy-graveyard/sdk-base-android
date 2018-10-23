@@ -93,6 +93,7 @@ open class XYBase {
         //or failed internet calls for example
         fun logError(source: Any, function: String, message: String, debug: Boolean) {
             logError(source, "$function:$message:${Thread.currentThread().name}", true)
+
             if (debug && isDebug()) {
                 throw RuntimeException()
             }

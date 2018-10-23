@@ -93,5 +93,6 @@ class XYPermissions(private val activity: Activity) : XYBase() {
         const val GALLERY_PERMISSION_REQ_CODE = 109
         const val CAMERA_PERMISSION_REQ_CODE = 209
         const val LOCATION_PERMISSIONS_REQ_CODE = 309
+        const val FINE_LOCATION_REQ_CODE = 310
     }
 }
