@@ -81,7 +81,10 @@ open class XYBase {
 
         fun logError(source: Any, ex: Throwable, reThrow: Boolean) {
             Log.e(sourceNameFromAny(source), classNameFromObject(ex))
-            Log.e(sourceNameFromAny(source), ex.stackTrace!!.contentToString().replace(", ", ",\r\n"))
+            ex.stackTrace?.let {stackTrace ->
+                Log.e(sourceNameFromAny(source), stackTrace.contentToString().replace(", ", ",\r\n"))
+            }
+
             if (isDebug()) {
                 if (reThrow) {
                     throw RuntimeException(ex)
