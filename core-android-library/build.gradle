@@ -17,12 +17,6 @@ buildscript {
     }
 }
 
-kotlin {
-    experimental {
-        coroutines 'enable'
-    }
-}
-
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -62,5 +56,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
-    implementation "androidx.appcompat:appcompat:$androidx_version"
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
 }
