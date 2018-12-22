@@ -1,3 +1,8 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.XYOracleNetwork'
+
 buildscript {
     repositories {
         mavenCentral()
@@ -12,24 +17,13 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.XYOracleNetwork'
-
-kotlin {
-    experimental {
-        coroutines 'enable'
-    }
-}
-
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 28
         defaultPublishConfig 'release'
     }
 
@@ -61,5 +55,5 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    api "com.android.support:appcompat-v7:$android_support_version"
+    api "androidx.appcompat:appcompat:$androidx_appcompat_version"
 }

@@ -26,8 +26,6 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import org.json.JSONArray;
@@ -40,6 +38,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Locale;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 // @formatter:off
 
@@ -2073,7 +2074,7 @@ public class XYDeviceName {
                     JSONObject json = jsonArray.getJSONObject(i);
                     DeviceInfo info = new DeviceInfo(json);
                     if ((codename.equalsIgnoreCase(info.codename) && model == null)
-                            || codename.equalsIgnoreCase(info.codename) && model.equalsIgnoreCase(info.model)) {
+                            || codename.equalsIgnoreCase(info.codename) && info.model.equalsIgnoreCase(model)) {
                         // Save to SharedPreferences so we don't need to make another request.
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putString(key, json.toString());
@@ -2086,7 +2087,7 @@ public class XYDeviceName {
             }
         }
 
-        if (codename.equals(Build.DEVICE) && model.equals(Build.MODEL)) {
+        if (Build.DEVICE.equals(codename) && Build.MODEL.equals(model)) {
             return new DeviceInfo(Build.MANUFACTURER, getDeviceName(), codename, model); // current device
         }
 
@@ -2145,7 +2146,7 @@ public class XYDeviceName {
             }
             return sb.toString();
         } catch (NullPointerException ex) {
-            XYBase.Companion.logException("XYDeviceName.java", ex, false);
+            XYBase.Companion.logError("XYDeviceName", ex, false);
             return null;
         } finally {
             if (reader != null) {
