@@ -24,6 +24,21 @@ class XYPermissions(private val activity: Activity) : XYBase() {
         return (result == PackageManager.PERMISSION_GRANTED)
     }
 
+    fun checkPermissionForBluetooth(): Boolean {
+        val result = ContextCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH)
+        return (result == PackageManager.PERMISSION_GRANTED)
+    }
+
+    fun checkPermissionForBluetoothAdmin(): Boolean {
+        val result = ContextCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH_ADMIN)
+        return (result == PackageManager.PERMISSION_GRANTED)
+    }
+
+    fun checkPermissionForBluetoothPrivilaged(): Boolean {
+        val result = ContextCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH_PRIVILEGED)
+        return (result == PackageManager.PERMISSION_GRANTED)
+    }
+
     fun requestPermission(permission: String, explainText: String, reqCode: Int) {
         if (Build.VERSION.SDK_INT < 23) {
             return
@@ -54,8 +69,9 @@ class XYPermissions(private val activity: Activity) : XYBase() {
         }
     }
 
-    fun requestPermissions(permissions: Array<String>, explainText: String, reqCode: Int) {
+    fun requestPermissions(permissions: Array<String>, explainText: String, reqCode: Int, granted: () -> Unit) {
         if (Build.VERSION.SDK_INT < 23) {
+            granted()
             return
         }
 
@@ -76,6 +92,7 @@ class XYPermissions(private val activity: Activity) : XYBase() {
                     ActivityCompat.requestPermissions(activity,
                             permissions,
                             reqCode)
+                    granted()
                 }
                 if (!activity.isFinishing) {
                     alertDialog.show()
@@ -84,6 +101,7 @@ class XYPermissions(private val activity: Activity) : XYBase() {
                 ActivityCompat.requestPermissions(activity,
                         permissions,
                         reqCode)
+                granted()
             }
         }
     }
@@ -95,5 +113,6 @@ class XYPermissions(private val activity: Activity) : XYBase() {
         const val CAMERA_PERMISSION_REQ_CODE = 209
         const val LOCATION_PERMISSIONS_REQ_CODE = 309
         const val FINE_LOCATION_REQ_CODE = 310
+        const val BLUETOOTH_PERMISSIONS_REQ_CODE = 311
     }
 }
