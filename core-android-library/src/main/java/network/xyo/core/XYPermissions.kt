@@ -12,8 +12,24 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import android.content.ContextWrapper
 
-class XYPermissions(private val context: Context) : XYBase() {
+
+
+class XYPermissions(context: Context) : XYBase() {
+
+    val context = getActivity(context)!!
+
+    private fun getActivity(context: Context): Activity? {
+        var contextToCheck = context
+        while (contextToCheck is ContextWrapper) {
+            if (contextToCheck is Activity) {
+                return contextToCheck
+            }
+            contextToCheck = contextToCheck.baseContext
+        }
+        return null
+    }
 
     fun checkPermissionForGallery(): Boolean {
         val result = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
