@@ -13,6 +13,9 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 
 
 class XYPermissions(val context: Context) : XYBase() {
@@ -128,7 +131,17 @@ class XYPermissions(val context: Context) : XYBase() {
                         ActivityCompat.requestPermissions(activity,
                                 permissions,
                                 reqCode)
-                        granted()
+                        GlobalScope.async{
+                            var retry = 100
+                            while (retry != 0) {
+                                retry--
+                                if (allPermissionsGranted(permissions)) {
+                                    granted()
+                                    retry = 0
+                                }
+                                delay(500)
+                            }
+                        }
                     }
                     if (!activity.isFinishing) {
                         alertDialog.show()
@@ -137,6 +150,17 @@ class XYPermissions(val context: Context) : XYBase() {
                     ActivityCompat.requestPermissions(activity,
                             permissions,
                             reqCode)
+                    GlobalScope.async{
+                        var retry = 100
+                        while (retry != 0) {
+                            retry--
+                            if (allPermissionsGranted(permissions)) {
+                                granted()
+                                retry = 0
+                            }
+                            delay(500)
+                        }
+                    }
                 }
             } else {
                 granted()
@@ -157,7 +181,7 @@ class XYPermissions(val context: Context) : XYBase() {
 
     private fun allPermissionsGranted(permissions: Array<String>): Boolean {
         for (permission in permissions) {
-            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
                 return false
             }
         }
