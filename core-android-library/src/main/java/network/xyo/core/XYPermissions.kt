@@ -8,12 +8,11 @@ import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import android.content.ContextWrapper
-
 
 
 class XYPermissions(val context: Context) : XYBase() {
@@ -117,13 +116,8 @@ class XYPermissions(val context: Context) : XYBase() {
         }
 
         if (activity != null) {
-            if (ContextCompat.checkSelfPermission(activity, permissions[0])
-                    != PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(activity, permissions[1])
-                    != PackageManager.PERMISSION_GRANTED) {
-
-                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[0])
-                        && ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[1])) {
+            if (!allPermissionsGranted(permissions)) {
+                if (shouldShowRequest(permissions)) {
 
                     val alertDialog = AlertDialog.Builder(activity).create()
                     alertDialog.setTitle("Permission Needed")
@@ -151,6 +145,25 @@ class XYPermissions(val context: Context) : XYBase() {
             logError("Can't call this without an Activity Context", false)
         }
     }
+
+    private fun shouldShowRequest(permissions: Array<String>): Boolean {
+        for (permission in permissions) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(activity!!, permission)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun allPermissionsGranted(permissions: Array<String>): Boolean {
+        for (permission in permissions) {
+            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
+        }
+        return true
+    }
+
 
     companion object {
 
