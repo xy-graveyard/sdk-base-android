@@ -25,6 +25,11 @@ class XYPermissions(private val context: Context) : XYBase() {
         return (result == PackageManager.PERMISSION_GRANTED)
     }
 
+    fun checkPermissionForReadExternalStorage(): Boolean {
+        val result = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
+        return (result == PackageManager.PERMISSION_GRANTED)
+    }
+
     fun checkPermissionForBluetooth(): Boolean {
         val result = ContextCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH)
         return (result == PackageManager.PERMISSION_GRANTED)
@@ -90,11 +95,6 @@ class XYPermissions(private val context: Context) : XYBase() {
             return
         }
 
-        if (checkPermissionForCoarseLocation() && checkPermissionForFineLocation()) {
-            granted()
-            return
-        }
-
         if (ContextCompat.checkSelfPermission(context, permissions[0])
                 != PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, permissions[1])
@@ -122,6 +122,8 @@ class XYPermissions(private val context: Context) : XYBase() {
                         permissions,
                         reqCode)
             }
+        } else {
+            granted()
         }
     }
 
