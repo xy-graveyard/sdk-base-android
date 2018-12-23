@@ -16,9 +16,9 @@ import android.content.ContextWrapper
 
 
 
-class XYPermissions(context: Context) : XYBase() {
+class XYPermissions(val context: Context) : XYBase() {
 
-    val context = getActivity(context)!!
+    val activity = getActivity(context)
 
     private fun getActivity(context: Context): Activity? {
         var contextToCheck = context
@@ -80,28 +80,33 @@ class XYPermissions(context: Context) : XYBase() {
             return
         }
 
-        if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+        if (activity != null) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity, permission)) {
+            if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
 
-                val alertDialog = AlertDialog.Builder(context).create()
-                alertDialog.setTitle("Permission Needed")
-                alertDialog.setMessage(explainText)
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
-                ) { dialog, _ ->
-                    dialog.dismiss()
-                    ActivityCompat.requestPermissions(context,
+                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+
+                    val alertDialog = AlertDialog.Builder(activity).create()
+                    alertDialog.setTitle("Permission Needed")
+                    alertDialog.setMessage(explainText)
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
+                    ) { dialog, _ ->
+                        dialog.dismiss()
+                        ActivityCompat.requestPermissions(activity,
+                                arrayOf(permission),
+                                reqCode)
+                    }
+                    if (!activity.isFinishing) {
+                        alertDialog.show()
+                    }
+                } else {
+                    ActivityCompat.requestPermissions(activity,
                             arrayOf(permission),
                             reqCode)
                 }
-                if (!context.isFinishing) {
-                    alertDialog.show()
-                }
-            } else {
-                ActivityCompat.requestPermissions(context,
-                        arrayOf(permission),
-                        reqCode)
             }
+        } else {
+            logError("Can't call this without an Activity Context", false)
         }
     }
 
@@ -111,35 +116,39 @@ class XYPermissions(context: Context) : XYBase() {
             return
         }
 
-        if (ContextCompat.checkSelfPermission(context, permissions[0])
-                != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(context, permissions[1])
-                != PackageManager.PERMISSION_GRANTED) {
+        if (activity != null) {
+            if (ContextCompat.checkSelfPermission(activity, permissions[0])
+                    != PackageManager.PERMISSION_GRANTED
+                    && ContextCompat.checkSelfPermission(activity, permissions[1])
+                    != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity, permissions[0])
-                    && ActivityCompat.shouldShowRequestPermissionRationale(context, permissions[1])) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[0])
+                        && ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[1])) {
 
-                val alertDialog = AlertDialog.Builder(context).create()
-                alertDialog.setTitle("Permission Needed")
-                alertDialog.setMessage(explainText)
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
-                ) { dialog, _ ->
-                    dialog.dismiss()
-                    ActivityCompat.requestPermissions(context,
+                    val alertDialog = AlertDialog.Builder(activity).create()
+                    alertDialog.setTitle("Permission Needed")
+                    alertDialog.setMessage(explainText)
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
+                    ) { dialog, _ ->
+                        dialog.dismiss()
+                        ActivityCompat.requestPermissions(activity,
+                                permissions,
+                                reqCode)
+                        granted()
+                    }
+                    if (!activity.isFinishing) {
+                        alertDialog.show()
+                    }
+                } else {
+                    ActivityCompat.requestPermissions(activity,
                             permissions,
                             reqCode)
-                    granted()
-                }
-                if (!context.isFinishing) {
-                    alertDialog.show()
                 }
             } else {
-                ActivityCompat.requestPermissions(context,
-                        permissions,
-                        reqCode)
+                granted()
             }
         } else {
-            granted()
+            logError("Can't call this without an Activity Context", false)
         }
     }
 
