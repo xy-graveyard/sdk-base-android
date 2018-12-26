@@ -31,12 +31,12 @@ buildscript {
         google()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$android_plugin_version"
+        classpath "com.android.tools.build:gradle:$androidPluginVersion"
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':core-android-library')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 }
