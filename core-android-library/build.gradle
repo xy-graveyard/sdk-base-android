@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.XYOracleNetwork'
+group = 'com.github.XYOracleNetwork'
 
 buildscript {
     repositories {
@@ -12,7 +12,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:$android_plugin_version"
+        classpath "com.android.tools.build:gradle:$androidPluginVersion"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -41,6 +41,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        kotlinOptions {
+            allWarningsAsErrors = true
+        }
     }
 }
 
@@ -53,7 +56,9 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    api "androidx.appcompat:appcompat:$androidx_appcompat_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+    api "androidx.appcompat:appcompat:$androidxAppcompatVersion"
 }

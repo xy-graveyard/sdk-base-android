@@ -8,12 +8,30 @@ import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 
-class XYPermissions(private val context: Context) : XYBase() {
+
+class XYPermissions(val context: Context) : XYBase() {
+
+    val activity = getActivity(context)
+
+    private fun getActivity(context: Context): Activity? {
+        var contextToCheck = context
+        while (contextToCheck is ContextWrapper) {
+            if (contextToCheck is Activity) {
+                return contextToCheck
+            }
+            contextToCheck = contextToCheck.baseContext
+        }
+        return null
+    }
 
     fun checkPermissionForGallery(): Boolean {
         val result = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -22,6 +40,11 @@ class XYPermissions(private val context: Context) : XYBase() {
 
     fun checkPermissionForCamera(): Boolean {
         val result = ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+        return (result == PackageManager.PERMISSION_GRANTED)
+    }
+
+    fun checkPermissionForReadExternalStorage(): Boolean {
+        val result = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
         return (result == PackageManager.PERMISSION_GRANTED)
     }
 
@@ -59,28 +82,33 @@ class XYPermissions(private val context: Context) : XYBase() {
             return
         }
 
-        if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+        if (activity != null) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity, permission)) {
+            if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
 
-                val alertDialog = AlertDialog.Builder(context).create()
-                alertDialog.setTitle("Permission Needed")
-                alertDialog.setMessage(explainText)
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
-                ) { dialog, _ ->
-                    dialog.dismiss()
-                    ActivityCompat.requestPermissions(context,
+                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+
+                    val alertDialog = AlertDialog.Builder(activity).create()
+                    alertDialog.setTitle("Permission Needed")
+                    alertDialog.setMessage(explainText)
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
+                    ) { dialog, _ ->
+                        dialog.dismiss()
+                        ActivityCompat.requestPermissions(activity,
+                                arrayOf(permission),
+                                reqCode)
+                    }
+                    if (!activity.isFinishing) {
+                        alertDialog.show()
+                    }
+                } else {
+                    ActivityCompat.requestPermissions(activity,
                             arrayOf(permission),
                             reqCode)
                 }
-                if (!context.isFinishing) {
-                    alertDialog.show()
-                }
-            } else {
-                ActivityCompat.requestPermissions(context,
-                        arrayOf(permission),
-                        reqCode)
             }
+        } else {
+            logError("Can't call this without an Activity Context", false)
         }
     }
 
@@ -90,40 +118,76 @@ class XYPermissions(private val context: Context) : XYBase() {
             return
         }
 
-        if (checkPermissionForCoarseLocation() && checkPermissionForFineLocation()) {
-            granted()
-            return
-        }
+        if (activity != null) {
+            if (!allPermissionsGranted(permissions)) {
+                if (shouldShowRequest(permissions)) {
 
-        if (ContextCompat.checkSelfPermission(context, permissions[0])
-                != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(context, permissions[1])
-                != PackageManager.PERMISSION_GRANTED) {
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity, permissions[0])
-                    && ActivityCompat.shouldShowRequestPermissionRationale(context, permissions[1])) {
-
-                val alertDialog = AlertDialog.Builder(context).create()
-                alertDialog.setTitle("Permission Needed")
-                alertDialog.setMessage(explainText)
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
-                ) { dialog, _ ->
-                    dialog.dismiss()
-                    ActivityCompat.requestPermissions(context,
+                    val alertDialog = AlertDialog.Builder(activity).create()
+                    alertDialog.setTitle("Permission Needed")
+                    alertDialog.setMessage(explainText)
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
+                    ) { dialog, _ ->
+                        dialog.dismiss()
+                        ActivityCompat.requestPermissions(activity,
+                                permissions,
+                                reqCode)
+                        GlobalScope.async{
+                            var retry = 100
+                            while (retry != 0) {
+                                retry--
+                                if (allPermissionsGranted(permissions)) {
+                                    granted()
+                                    retry = 0
+                                }
+                                delay(500)
+                            }
+                        }
+                    }
+                    if (!activity.isFinishing) {
+                        alertDialog.show()
+                    }
+                } else {
+                    ActivityCompat.requestPermissions(activity,
                             permissions,
                             reqCode)
-                    granted()
-                }
-                if (!context.isFinishing) {
-                    alertDialog.show()
+                    GlobalScope.async{
+                        var retry = 100
+                        while (retry != 0) {
+                            retry--
+                            if (allPermissionsGranted(permissions)) {
+                                granted()
+                                retry = 0
+                            }
+                            delay(500)
+                        }
+                    }
                 }
             } else {
-                ActivityCompat.requestPermissions(context,
-                        permissions,
-                        reqCode)
+                granted()
             }
+        } else {
+            logError("Can't call this without an Activity Context", false)
         }
     }
+
+    private fun shouldShowRequest(permissions: Array<String>): Boolean {
+        for (permission in permissions) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(activity!!, permission)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun allPermissionsGranted(permissions: Array<String>): Boolean {
+        for (permission in permissions) {
+            if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
+        }
+        return true
+    }
+
 
     companion object {
 
