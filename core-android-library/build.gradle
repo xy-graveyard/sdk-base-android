@@ -25,6 +25,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         defaultPublishConfig 'release'
+        versionCode 1
+        versionName "1.0.1"
     }
 
     buildTypes {
