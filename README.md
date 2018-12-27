@@ -1,15 +1,15 @@
-[logo]: https://www.xy.company/img/home/logo_xy.png
+[logo]: https://www.xy.company/img/home/logo_xy.png "XYAccount"
 
 ![logo]
 
-# XY Core Android Library (sdk-core-android)
-[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-core-android?branch=master)](https://bettercodehub.com/results/XYOracleNetwork/sdk-core-android) [![](https://jitpack.io/v/XYOracleNetwork/sdk-core-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-core-android)
+# sdk-core-android
+
+[![](https://jitpack.io/v/XYOracleNetwork/sdk-core-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-core-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-core-android/maintainability)
 
 | Branches        | Status           |
 | ------------- |:-------------:|
-| Master      | [![](https://circleci.com/gh/XYOracleNetwork/sdk-core-android.svg?style=shield)](https://circleci.com/gh/XYOracleNetwork/sdk-core-android) |
-| Develop      | [![](https://circleci.com/gh/XYOracleNetwork/sdk-core-android/tree/develop.svg?style=shield)](https://circleci.com/gh/XYOracleNetwork/sdk-core-android/tree/develop)      |
-
+| Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-core-android) |
+| Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-core-android)      |
 
 An XYO inspired utility framework for Android and Kotlin
 
