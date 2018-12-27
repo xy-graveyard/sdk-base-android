@@ -1,4 +1,15 @@
+[logo]: https://www.xy.company/img/home/logo_xy.png "XYAccount"
+
+![logo]
+
 # sdk-core-android
+
+[![](https://jitpack.io/v/XYOracleNetwork/sdk-core-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-core-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-core-android/maintainability)
+
+| Branches        | Status           |
+| ------------- |:-------------:|
+| Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-core-android) |
+| Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-core-android)      |
 
 An XYO inspired utility framework for Android and Kotlin
 
