@@ -75,4 +75,5 @@ dependencies {
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
     api "androidx.appcompat:appcompat:1.0.2"
+    api "com.jaredrummler:android-device-names:1.1.8"
 }
