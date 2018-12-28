@@ -2,6 +2,7 @@ package network.xyo.core
 
 import android.os.Debug
 import android.util.Log
+import com.jaredrummler.android.device.DeviceName
 
 //this allows us to use guard to check for null on these object and
 //conditionally execute code if they are null and returns a non-optional object
@@ -131,6 +132,10 @@ open class XYBase {
         //that may or may not be a result of a user action
         fun logStatus(source: Any, status: String) {
             Log.i(sourceNameFromAny(source), "App Status: $status")
+        }
+
+        fun getDeviceName(): String {
+            return DeviceName.getDeviceName()
         }
 
     }
