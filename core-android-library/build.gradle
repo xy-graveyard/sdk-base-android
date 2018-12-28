@@ -29,6 +29,8 @@ android {
         versionName "1.0.1"
     }
 
+    defaultPublishConfig "jitpackRelease"
+
     flavorDimensions "xylibs"
     productFlavors {
         local {
