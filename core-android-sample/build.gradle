@@ -13,6 +13,17 @@ android {
         versionName "1.0"
 
     }
+
+    flavorDimensions "xylibs"
+    productFlavors {
+        local {
+            dimension "xylibs"
+        }
+        jitpack {
+            dimension "xylibs"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

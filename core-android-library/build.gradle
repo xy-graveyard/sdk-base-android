@@ -29,6 +29,16 @@ android {
         versionName "1.0.1"
     }
 
+    flavorDimensions "xylibs"
+    productFlavors {
+        local {
+            dimension "xylibs"
+        }
+        jitpack {
+            dimension "xylibs"
+        }
+    }
+
     buildTypes {
         release {
             debuggable false
@@ -62,5 +72,5 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
-    api "androidx.appcompat:appcompat:$androidxAppcompatVersion"
+    api "androidx.appcompat:appcompat:1.0.2"
 }

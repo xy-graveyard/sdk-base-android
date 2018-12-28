@@ -17,8 +17,9 @@ An XYO inspired utility framework for Android and Kotlin
 
 * JDK 1.8
 * Android SDK
-  * Kotlin
-  * Build Tools 27+
+  - Kotlin
+  - Build Tools 28+
+
   
 ## Installing
 
@@ -42,7 +43,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
+    implementation 'com.github.XYOracleNetwork:sdk-core-android:1.0.2'
 }
 ```
 
