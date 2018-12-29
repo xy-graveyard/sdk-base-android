@@ -21,6 +21,12 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
 
+    lintOptions {
+        checkAllWarnings true
+        warningsAsErrors true
+        ignore 'MissingTranslation'
+    }
+
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
