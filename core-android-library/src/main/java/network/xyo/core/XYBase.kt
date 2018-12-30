@@ -3,6 +3,9 @@ package network.xyo.core
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.res.Resources
+import android.util.TypedValue
+import android.view.View
 
 //this allows us to use guard to check for null on these object and
 //conditionally execute code if they are null and returns a non-optional object

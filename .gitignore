@@ -12,3 +12,4 @@
 *.apk
 google-services.json
 core-android-sample/local.properties
+core-android-library/.settings
