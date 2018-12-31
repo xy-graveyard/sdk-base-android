@@ -12,7 +12,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:$androidPluginVersion"
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -21,18 +21,10 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
 
-    lintOptions {
-        checkAllWarnings true
-        warningsAsErrors true
-        ignore 'MissingTranslation'
-    }
-
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
         defaultPublishConfig 'release'
-        versionCode 1
-        versionName "1.0.1"
     }
 
     defaultPublishConfig "jitpackRelease"
@@ -59,11 +51,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
         kotlinOptions {
             allWarningsAsErrors = true
         }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
