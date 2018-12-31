@@ -11,26 +11,11 @@
 | Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-core-android) |
 | Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-core-android)      |
 
-An XYO inspired utility framework for Android and Kotlin
+An XY inspired utility framework for Android and Kotlin
 
-## Prerequisites
-
-* JDK 1.8
-* Android SDK
-  - Kotlin
-  - Build Tools 28+
-
-  
 ## Installing
 
-You can add sdk-core-android to your existing app by cloning the project and manually adding it
-to your build.gradle:
-
-```bash
-git clone git@github.com:XYOracleNetwork/sdk-core-android.git
-```
-
-or by using jitPack:
+Using jitPack:
 
 ```gradle
 allprojects {

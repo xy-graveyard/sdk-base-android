@@ -1,8 +1,6 @@
 package network.xyo.core.sample
 
-import android.Manifest
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_xyo_core_sample.*
 import network.xyo.core.XYBase
