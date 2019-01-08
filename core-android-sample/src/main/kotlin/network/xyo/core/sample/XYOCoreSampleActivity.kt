@@ -5,6 +5,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_xyo_core_sample.*
 import network.xyo.core.XYBase
 import network.xyo.core.XYInfo
+import network.xyo.core.XYRandom
 
 class XYOCoreSampleActivity : Activity() {
 
@@ -18,10 +19,15 @@ class XYOCoreSampleActivity : Activity() {
         initTimeFields()
         initTestLoggingButton()
         initActivityString()
+        initRandom()
     }
 
     private fun initDeviceName() {
         txtDeviceName.text = getString(R.string.device_name_label, info.deviceName)
+    }
+
+    private fun initRandom() {
+        txtRandom.text = getString(R.string.random_label, XYRandom.generateRandomBase62String(12))
     }
 
     private fun initTimeFields() {
