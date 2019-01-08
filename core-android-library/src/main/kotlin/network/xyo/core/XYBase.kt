@@ -22,13 +22,13 @@ open class XYBase {
         get() {
             synchronized(this) {
                 if (_log == null) {
-                    _log = XYLogging(this.tag)
+                    _log = XYLogging(info.classNameFromObject(this))
                 }
-                return _log!!
+                return _log ?: throw NullPointerException()
             }
         }
 
-    val tag: String
+    val className: String
         get() {
             return info.classNameFromObject(this)
         }
@@ -46,7 +46,17 @@ open class XYBase {
 
     companion object {
 
-        val info = XYInfo()
+        //we just-in-time create this as to not create it on objects that don't need it
+        private var pInfo: XYInfo? = null
+        val info: XYInfo
+            get() {
+                synchronized(this) {
+                    if (pInfo == null) {
+                        pInfo = XYInfo()
+                    }
+                    return pInfo ?: throw NullPointerException()
+                }
+            }
 
         fun log(source: String): XYLogging {
             return XYLogging(source)
