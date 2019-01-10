@@ -4,12 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 
-//this allows us to use guard to check for null on these object and
-//conditionally execute code if they are null and returns a non-optional object
-inline fun <T> T.guard(block: T.() -> Unit): T {
-    if (this == null) block(); return this
-}
-
 open class XYBase {
 
     val now: Long
@@ -28,13 +22,13 @@ open class XYBase {
         get() {
             synchronized(this) {
                 if (_log == null) {
-                    _log = XYLogging(this.tag)
+                    _log = XYLogging(info.classNameFromObject(this))
                 }
-                return _log!!
+                return _log ?: throw NullPointerException()
             }
         }
 
-    val tag: String
+    val className: String
         get() {
             return info.classNameFromObject(this)
         }
@@ -52,11 +46,20 @@ open class XYBase {
 
     companion object {
 
-        val info = XYInfo()
+        //we just-in-time create this as to not create it on objects that don't need it
+        private var pInfo: XYInfo? = null
+        val info: XYInfo
+            get() {
+                synchronized(this) {
+                    if (pInfo == null) {
+                        pInfo = XYInfo()
+                    }
+                    return pInfo ?: throw NullPointerException()
+                }
+            }
 
         fun log(source: String): XYLogging {
             return XYLogging(source)
         }
     }
-
 }

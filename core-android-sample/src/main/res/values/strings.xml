@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">XYO Android Core Sample</string>
     <string name="test_logging">Test Logging</string>
+    <string name="device_name_label">Device Name: %s</string>
+    <string name="now_label">Now: %d</string>
+    <string name="now_nano_label">Now Nano: %d</string>
+    <string name="random_label">Random: %s</string>
 </resources>
