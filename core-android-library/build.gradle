@@ -27,18 +27,6 @@ android {
         defaultPublishConfig 'release'
     }
 
-    defaultPublishConfig "jitpackRelease"
-
-    flavorDimensions "xylibs"
-    productFlavors {
-        local {
-            dimension "xylibs"
-        }
-        jitpack {
-            dimension "xylibs"
-        }
-    }
-
     buildTypes {
         release {
             debuggable false
