@@ -28,7 +28,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-core-android:1.0.2'
+    implementation 'com.github.XYOracleNetwork:sdk-core-android:1.2.4'
 }
 ```
 
