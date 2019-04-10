@@ -4,7 +4,7 @@ import android.util.Log
 
 /* We have everyone of these functions returning 'this' to allow for chaining */
 
-class XYLogging(val source: String) {
+open class XYLogging(private val source: String) {
     fun error(message: String, reThrow: Boolean): XYLogging {
         Log.e(info.sourceNameFromAny(source), message)
         Log.e(info.sourceNameFromAny(source), Thread.currentThread().stackTrace?.contentToString()?.replace(", ", ",\r\n")
