@@ -43,6 +43,9 @@ class XYOCoreSampleActivity : Activity() {
         btnTestLogging.setOnClickListener {
             XYBase.log(className).info("==== Testing Logging [XYBase] ====")
                 .info( "Log.info Test")
+                .info( "initTestLoggingButton", "Log.info Test")
+                .error(Exception("XYOCoreSampleActivity Test Exception (Log.error)"))
+                .error("XYOCoreSampleActivity Test Exception (Log.error)")
                 .error(Exception("XYOCoreSampleActivity Test Exception (Log.error)"), false)
                 .action("Log.action Test")
                 .error("Log.error Test", false)
