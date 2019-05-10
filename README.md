@@ -1,15 +1,14 @@
-[logo]: https://www.xy.company/img/home/logo_xy.png "XYAccount"
+[logo]: https://cdn.xy.company/img/brand/XY_Logo_GitHub.png
 
 ![logo]
 
 # sdk-core-android
 
-[![](https://jitpack.io/v/XYOracleNetwork/sdk-core-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-core-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-core-android/maintainability)
+[![](https://jitpack.io/v/XYOracleNetwork/sdk-core-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-core-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-core-android/maintainability) 
 
-| Branches        | Status           |
-| ------------- |:-------------:|
-| Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-core-android) |
-| Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-core-android)      |
+[![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-core-android) [![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/sdk-core-android?branch=master)](https://bettercodehub.com/) [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=XYOracleNetwork_sdk-core-android&metric=alert_status)](https://sonarcloud.io/dashboard?id=XYOracleNetwork_sdk-core-android) [![Known Vulnerabilities](https://snyk.io/test/github/XYOracleNetwork/sdk-core-android/badge.svg)](https://snyk.io/test/github/XYOracleNetwork/sdk-core-android) 
+
+[![](https://img.shields.io/gitter/room/XYOracleNetwork/Stardust.svg)](https://gitter.im/XYOracleNetwork/Dev)
 
 An XY inspired utility framework for Android and Kotlin
 
