@@ -1,2 +1,2 @@
-include ':core-android-sample'
-include ':core-android-library'
+include ':base-android-sample'
+include ':base-android-library'
