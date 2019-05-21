@@ -9,3 +9,12 @@ before_script:
 
 script:
   - ./gradlew install
+
+deploy:
+  provider: bintray
+  skip_cleanup: true
+  file: bintray
+  email: $BINTRAY_USER
+  api_key: $BINTRAY_KEY
+  on:
+    branch: master
