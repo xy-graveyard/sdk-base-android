@@ -2,14 +2,14 @@
 
 # ![logo]
 
-# sdk-core-android
+# sdk-base-android
 
-[![](https://jitpack.io/v/XYOracleNetwork/sdk-core-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-core-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-core-android/maintainability)
+[![](https://jitpack.io/v/XYOracleNetwork/sdk-base-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-base-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-base-android/maintainability)
 
 | Branches        | Status           |
 | ------------- |:-------------:|
-| Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-core-android) |
-| Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-core-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-core-android)      |
+| Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-base-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-base-android) |
+| Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-base-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-base-android)      |
 
 An XY inspired utility framework for Android and Kotlin
 
@@ -28,7 +28,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-core-android:1.2.4'
+    implementation 'com.github.XYOracleNetwork:sdk-base-android:1.2.4'
 }
 ```
 
