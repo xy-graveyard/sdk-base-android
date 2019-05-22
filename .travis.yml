@@ -11,7 +11,8 @@ script:
   - ./gradlew install
 
 deploy:
-  provider: bintray
+  provider: script
+  script: ./gradlew :base-android-library:assembleRelease :base-android-library:bintrayUpload
   skip_cleanup: true
   file: bintray
   user: $BINTRAY_USER
