@@ -20,12 +20,12 @@ buildscript {
     }
 }
 
+def majorVersion = 1
+def minorVersion = 3
+
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
-
-    def majorVersion = 1
-    def minorVersion = 3
 
     Properties versionProps = new Properties()
     def versionPropsFile = file('version.properties')
@@ -87,9 +87,9 @@ publishing {
     publications {
         Production(MavenPublication) {
             artifact("$buildDir/outputs/aar/base-android-library-release.aar")
-            groupId 'network.xyo'
+            groupId 'xyoraclenetwork'
             artifactId 'base'
-            version '1.3.0'
+            version '1.3.1'
 
             //The publication doesn't know about our dependencies, so we have to manually add them to the pom
             pom.withXml {
@@ -109,7 +109,13 @@ publishing {
 }
 
 bintray {
-    // Get Bintray credential from environment variable
+    Properties versionProps = new Properties()
+    def versionPropsFile = file('version.properties')
+    if (versionPropsFile.exists())
+        versionProps.load(new FileInputStream(versionPropsFile))
+    def code = (versionProps['VERSION_CODE'] ?: "0").toInteger()
+    def verString = majorVersion + '.' + minorVersion + code
+
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
     dryRun = false
@@ -124,8 +130,8 @@ bintray {
         vcsUrl = 'https://github.com/xyoraclenetwork/sdk-base-android.git'
 
         version {
-            name = '1.3.0'
-            vcsTag = '1.3.0'
+            name = verString
+            vcsTag = verString
         }
     }
     publications = ['Production']
