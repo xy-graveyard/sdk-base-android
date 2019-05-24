@@ -88,7 +88,7 @@ publishing {
     publications {
         Production(MavenPublication) {
             artifact("$buildDir/outputs/aar/base-android-library-release.aar")
-            groupId 'xyoraclenetwork'
+            groupId 'network.xyo'
             artifactId 'base'
             version verString
 
@@ -118,7 +118,7 @@ bintray {
     pkg {
         repo = 'xyo'
         name = 'sdk-base-android'
-        userOrg = 'network.xyo'
+        userOrg = 'xyoraclenetwork'
         licenses = ['LGPL-3.0']
         desc = 'Android Base Classes'
         vcsUrl = 'https://github.com/xyoraclenetwork/sdk-base-android.git'
