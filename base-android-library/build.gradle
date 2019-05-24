@@ -118,7 +118,7 @@ bintray {
     pkg {
         repo = 'xyo'
         name = 'sdk-base-android'
-        userOrg = 'xyoraclenetwork'
+        userOrg = 'network.xyo'
         licenses = ['LGPL-3.0']
         desc = 'Android Base Classes'
         vcsUrl = 'https://github.com/xyoraclenetwork/sdk-base-android.git'
