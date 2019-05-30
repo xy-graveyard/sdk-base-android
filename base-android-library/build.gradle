@@ -4,7 +4,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
-group = 'com.github.XYOracleNetwork'
+group = 'network.xyo'
 
 buildscript {
     repositories {
@@ -89,7 +89,7 @@ publishing {
         Production(MavenPublication) {
             artifact("$buildDir/outputs/aar/base-android-library-release.aar")
             groupId 'network.xyo'
-            artifactId 'base'
+            artifactId 'sdk-base-android'
             version verString
 
             //The publication doesn't know about our dependencies, so we have to manually add them to the pom
