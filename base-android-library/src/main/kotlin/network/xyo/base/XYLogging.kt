@@ -7,8 +7,10 @@ import android.util.Log
 open class XYLogging(private val source: String) {
     fun error(message: String, reThrow: Boolean): XYLogging {
         Log.e(info.sourceNameFromAny(source), message)
-        Log.e(info.sourceNameFromAny(source), Thread.currentThread().stackTrace?.contentToString()?.replace(", ", ",\r\n")
-                ?: "Unknown Thread")
+        val stackTrace = Thread.currentThread().stackTrace
+        if (!stackTrace.isNullOrEmpty()) {
+            Log.e(info.sourceNameFromAny(source), stackTrace.contentToString().replace(", ", ",\r\n"))
+        }
         if (reThrow) {
             throw RuntimeException()
         }
@@ -23,8 +25,9 @@ open class XYLogging(private val source: String) {
 
     fun error(ex: Throwable, reThrow: Boolean): XYLogging {
         Log.e(info.sourceNameFromAny(source), info.classNameFromObject(ex))
-        ex.stackTrace?.let {stackTrace ->
-            android.util.Log.e(info.sourceNameFromAny(source), stackTrace.contentToString().replace(", ", ",\r\n"))
+        val stackTrace = ex.stackTrace
+        if (!stackTrace.isNullOrEmpty()) {
+            Log.e(info.sourceNameFromAny(source), stackTrace.contentToString().replace(", ", ",\r\n"))
         }
 
         if (info.hasDebugger) {
