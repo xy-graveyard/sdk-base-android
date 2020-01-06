@@ -30,6 +30,14 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    compileOptions {
+        kotlinOptions {
+            allWarningsAsErrors = true
+        }
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     packagingOptions {
         exclude 'META-INF/build.kotlin_module'
         exclude 'META-INF/atomicfu.kotlin_module'
@@ -43,7 +51,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
