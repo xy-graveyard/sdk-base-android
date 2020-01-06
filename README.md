@@ -12,7 +12,6 @@
 ## Table of Contents
 
 -   [Title](#sdk-base-android)
--   [Description](#description)
 -   [Install](#install)
 -   [License](#license)
 -   [Credits](#credits)
