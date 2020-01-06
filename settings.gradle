@@ -1,2 +1,3 @@
 include ':base-android-sample'
 include ':base-android-library'
+rootProject.name='sdk-base-android'
