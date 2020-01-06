@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'maven-publish'
+apply plugin: 'digital.wup.android-maven-publish'
 
 group = 'network.xyo'
 
@@ -16,6 +16,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'digital.wup:android-maven-publish:3.6.2'
     }
 }
 
@@ -95,25 +96,11 @@ publishing {
         }
     }
     publications {
-        Production(MavenPublication) {
+        mavenAar(MavenPublication) {
             groupId 'XYOracleNetwork'
             artifactId 'sdk-xyo-android'
             version verString
-            artifact("$buildDir/outputs/aar/xyo-android-library-release.aar")
-
-            // The publication doesn't know about our dependencies, so we have to manually add them to the pom
-            pom.withXml {
-                // def dependenciesNode = asNode().appendNode('dependencies')
-                // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.compile.allDependencies.each {
-                    if(it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.group)
-                        dependencyNode.appendNode('artifactId', it.name)
-                        dependencyNode.appendNode('version', it.version)
-                    }
-                }
-            }
+            from components.android
         }
     }
 }
