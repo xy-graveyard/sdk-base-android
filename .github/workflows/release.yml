@@ -6,15 +6,20 @@ on:
       - 'v*'
 
 jobs:         
-  publish-gpr:
+  publish:
+
     runs-on: ubuntu-latest
+    
     steps: 
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      - uses: actions/checkout@v2
         env: 
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - uses: actions/setup-java@v1
         with:
-          java-version: 11
-      - run: | 
-              gradle assembleRelease 
-              gradle publish
+          java-version: 1.8
+      - name: Permission for gradlew
+        run: chmod +x gradlew
+      - name: Build
+        run: ./gradlew assembleRelease
+      - name: Publish
+        run: gradle publish
