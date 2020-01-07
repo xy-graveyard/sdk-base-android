@@ -17,4 +17,5 @@ jobs:
         with:
           java-version: 11
       - run: | 
-              ./gradlew assembleRelease publish
+              ./gradlew assembleRelease 
+              ./gradlew publish
