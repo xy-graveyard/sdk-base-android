@@ -16,7 +16,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'digital.wup:android-maven-publish:3.6.2'
     }
 }
 
@@ -97,7 +96,7 @@ publishing {
     }
     publications {
         Production(MavenPublication) {
-            groupId 'XYOracleNetwork'
+            groupId 'network.xyo'
             artifactId 'sdk-base-android'
             version verString
             artifact("$buildDir/outputs/aar/base-android-library-release.aar")
