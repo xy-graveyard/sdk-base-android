@@ -88,7 +88,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/XYOracleNetwork/")
+            url = uri("https://maven.pkg.github.com/XYOracleNetwork/sdk-base-android")
             credentials {
                 username = System.getenv("GITHUB_USERNAME")
                 password = System.getenv("GITHUB_TOKEN")
