@@ -100,7 +100,7 @@ publishing {
             groupId 'XYOracleNetwork'
             artifactId 'sdk-base-android'
             version verString
-            artifact("$buildDir/outputs/aar/xyo-android-library-release.aar")
+            artifact("$buildDir/outputs/aar/base-android-library-release.aar")
 
             // The publication doesn't know about our dependencies, so we have to manually add them to the pom
             pom.withXml {
