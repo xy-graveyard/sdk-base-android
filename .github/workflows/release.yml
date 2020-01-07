@@ -12,8 +12,6 @@ jobs:
     
     steps: 
       - uses: actions/checkout@v2
-        env: 
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
@@ -22,4 +20,6 @@ jobs:
       - name: Build
         run: ./gradlew assembleRelease
       - name: Publish
+        env: 
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: gradle publish
