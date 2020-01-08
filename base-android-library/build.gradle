@@ -95,7 +95,7 @@ publishing {
         }
     }
     publications {
-        Production(MavenPublication) {
+        gpr(MavenPublication) {
             groupId 'network.xyo'
             artifactId 'sdk-base-android'
             version verString
