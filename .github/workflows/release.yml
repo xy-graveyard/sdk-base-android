@@ -18,7 +18,7 @@ jobs:
       - name: Permission for gradlew
         run: chmod +x gradlew
       - name: Build
-        run: ./gradlew assembleRelease
+        run: ./gradlew :base-android-library:assembleRelease
       - name: Publish
         env: 
           GITHUB_USERNAME: ${{ secrets.USERNAME }}
