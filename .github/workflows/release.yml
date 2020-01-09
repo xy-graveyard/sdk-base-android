@@ -21,6 +21,6 @@ jobs:
         run: ./gradlew :base-android-library:assembleRelease
       - name: Publish
         env: 
-          BINTRAY_USER: ${{ secrets.USERNAME }}
-          BINTRAY_KEY: ${{ secrets.NEW_TOKEN }}
+          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+          BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
         run: ./gradlew :base-android-library:bintrayUpload
