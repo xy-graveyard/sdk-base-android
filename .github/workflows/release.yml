@@ -18,9 +18,9 @@ jobs:
       - name: Permission for gradlew
         run: chmod +x gradlew
       - name: Build
-        run: ./gradlew assembleRelease
+        run: ./gradlew :base-android-library:assembleRelease
       - name: Publish
         env: 
-          GITHUB_USERNAME: ${{ secrets.USERNAME }}
-          GITHUB_TOKEN: ${{ secrets.NEW_TOKEN }}
-        run: gradle publish
+          BINTRAY_USER: ${{ secrets.USERNAME }}
+          BINTRAY_KEY: ${{ secrets.NEW_TOKEN }}
+        run: ./gradlew :base-android-library:bintrayUpload
