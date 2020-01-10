@@ -5,6 +5,8 @@
 
 # sdk-base-android
 
+[ ![Download](https://api.bintray.com/packages/xyoraclenetwork/xyo/sdk-base-android/images/download.svg?version=2.1.183) ](https://bintray.com/xyoraclenetwork/xyo/sdk-base-android/2.1.183/link)
+
 [![](https://jitpack.io/v/XYOracleNetwork/sdk-base-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-base-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-base-android/maintainability)
 
 ## Table of Contents
