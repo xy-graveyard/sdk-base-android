@@ -5,8 +5,6 @@
 
 # sdk-base-android
 
-[![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-base-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-base-android)
-
 [![](https://jitpack.io/v/XYOracleNetwork/sdk-base-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-base-android) [![Maintainability](https://api.codeclimate.com/v1/badges/6f2827f8a4103feb7aca/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-base-android/maintainability)
 
 ## Table of Contents
