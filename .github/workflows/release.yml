@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: ./gradlew :base-android-library:assembleRelease
       - name: Create Release and Publish 
-        uses: actions/create-release@v1
+      - uses: actions/create-release@v1
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
