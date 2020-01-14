@@ -28,15 +28,12 @@ Properties versionProps = new Properties()
 def versionPropsFile = file('version.properties')
 if (versionPropsFile.exists())
     versionProps.load(new FileInputStream(versionPropsFile))
-def code = (versionProps['VERSION_CODE'] ?: "0").toInteger() + 1
+def code = (versionProps['VERSION_CODE'] ?: "0").toInteger()
 def verString = majorVersion + '.' + minorVersion + '.' + code
 
 android {
     compileSdkVersion 29
     buildToolsVersion '29.0.2'
-
-    versionProps['VERSION_CODE'] = code.toString()
-    versionProps.store(versionPropsFile.newWriter(), null)
 
     defaultConfig {
         minSdkVersion 21
