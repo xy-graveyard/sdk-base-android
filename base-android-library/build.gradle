@@ -23,7 +23,7 @@ buildscript {
 
 def majorVersion = 2
 def minorVersion = 1
-def code = 278
+def code = 279
 
 def verString = majorVersion + '.' + minorVersion + '.' + code
 
@@ -31,24 +31,12 @@ task version(type: VersionTask)
 class VersionTask extends DefaultTask {
     def majorVersion = 2
     def minorVersion = 1
-    def code = 278
+    def code = 279
 
     def verString = majorVersion + '.' + minorVersion + '.' + code
     @TaskAction
     def version() {
         println verString
-    }
-}
-
-task bumpPatchVersion(type: VersionPatchBump)
-class VersionPatchBump extends DefaultTask {
-    def majorVersion = 2
-    def minorVersion = 1
-    
-    @TaskAction
-
-    def bumpPatchVersion() {
-        def verString = majorVersion + '.' + minorVersion + '.' + code + 1
     }
 }
 

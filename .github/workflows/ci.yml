@@ -15,5 +15,3 @@ jobs:
       run:  chmod +x ./gradlew
     - name: build
       run: ./gradlew clean assemble
-    - name: version bump patch
-      run: ./gradlew bumpPatchVersion
