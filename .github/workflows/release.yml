@@ -17,8 +17,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: false
-          DEFAULT_BUMP: patch
-          CUSTOM_TAG: ./gradlew -q version
+          CUSTOM_TAG: 2.1.278
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
