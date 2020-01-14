@@ -48,12 +48,7 @@ class VersionPatchBump extends DefaultTask {
     @TaskAction
 
     def bumpPatchVersion() {
-        Properties versionProps = new Properties()
-        def versionPropsFile = file('version.properties')
-            if (versionPropsFile.exists())
-        versionProps.load(new FileInputStream(versionPropsFile))
-        def code = (versionProps['VERSION_CODE'] ?: "0").toInteger() + 1
-        def verString = majorVersion + '.' + minorVersion + '.' + code
+        def verString = majorVersion + '.' + minorVersion + '.' + code + 1
     }
 }
 
