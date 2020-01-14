@@ -32,4 +32,4 @@ jobs:
           release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
-        run: ./gradlew :base-android-library:bintrayUpload
+      - run: ./gradlew :base-android-library:bintrayUpload
