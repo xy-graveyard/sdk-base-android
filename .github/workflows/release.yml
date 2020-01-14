@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps: 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
@@ -21,6 +21,12 @@ jobs:
         run: ./gradlew install
       - name: Build
         run: ./gradlew :base-android-library:assembleRelease
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: false
+          DEFAULT_BUMP: patch
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
