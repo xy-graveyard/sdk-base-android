@@ -27,6 +27,19 @@ def code = 277
 
 def verString = majorVersion + '.' + minorVersion + '.' + code
 
+task version(type: VersionTask) 
+class VersionTask extends DefaultTask {
+    def majorVersion = 2
+    def minorVersion = 1
+    def code = 278
+
+    def verString = majorVersion + '.' + minorVersion + '.' + code
+    @TaskAction
+    def version() {
+        println verString
+    }
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion '29.0.2'
