@@ -21,8 +21,15 @@ jobs:
         run: ./gradlew install
       - name: Build
         run: ./gradlew :base-android-library:assembleRelease
-      - name: Publish
+      - uses: actions/create-release@v1
         env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
           BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
+          with: 
+            tag_name: ${{ github.ref }}
+            release_name: Release ${{ github.ref }}
+            draft: false
+            prerelease: false
+      - name: Create Release and Publish 
         run: ./gradlew :base-android-library:bintrayUpload
