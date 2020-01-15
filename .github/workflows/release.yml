@@ -11,9 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Publish and upload to bintray 
-        uses: actions/checkout@master
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@master
+      - uses: actions/setup-java@v1
         with:
           java-version: 1.8
         env: 
