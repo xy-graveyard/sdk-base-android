@@ -21,7 +21,7 @@ buildscript {
     }
 }
 
-def verString = project.majorVersion + '.' + project.minorVersion + '.' + project.patchVersion
+def verString = project.majorVersion + '.' + project.minorVersion + '.' + project.patchVersion + 1
 
 task version(type: VersionTask) 
 class VersionTask extends DefaultTask {
