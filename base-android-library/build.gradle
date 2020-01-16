@@ -29,7 +29,7 @@ class VersionTask extends DefaultTask {
     def verString = project.majorVersion + '.' + project.minorVersion + '.' + (project.patchVersion + 1)
     @TaskAction
     def version() {
-        println "version=${verString}"
+        println verString
     }
 }
 
