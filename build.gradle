@@ -31,7 +31,7 @@ buildscript {
 project.ext {
     majorVersion = 2
     minorVersion = 1
-    patchVersion = 279
+    patchVersion = 280
 }
 
 allprojects {
