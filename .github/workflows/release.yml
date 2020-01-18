@@ -35,7 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: false
-          CUSTOM_TAG: ${{ steps.release_version.outputs.version }}
+          CUSTOM_TAG: ${{ steps.release_version.outputs }}
+          DEFAULT_BUMP: patch
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
