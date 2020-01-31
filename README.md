@@ -32,7 +32,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-base-android:1.2.4'
+    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.283'
 }
 ```
 
