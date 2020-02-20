@@ -20,8 +20,8 @@ jobs:
       - name: install
         run: ./gradlew install
       - name: assemble
-        run: ./gradlew :xyo-android-library:assembleRelease
-      - name: bump version
+        run: ./gradlew :base-android-library:assembleRelease
+      - name: print version
         run: |
           echo "##[set-output name=version;]$(gradle -q printVersion)"
         id: release_version
@@ -29,7 +29,7 @@ jobs:
         env: 
           BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
           BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
-        run: ./gradlew :xyo-android-library:bintrayUpload
+        run: ./gradlew :base-android-library:bintrayUpload
       - name: get commit message
         run: |
           echo ::set-env name=commitmsg::$(git log --format=%B -n 1 ${{ github.event.after }})

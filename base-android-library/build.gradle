@@ -21,17 +21,25 @@ buildscript {
     }
 }
 
-def verString = project.majorVersion + '.' + project.minorVersion + '.' + (project.patchVersion)
+Properties versionProps = new Properties()
+def versionPropsFile = file('version.properties')
 
-task version(type: VersionTask) 
-class VersionTask extends DefaultTask {
+if (versionPropsFile.exists())
+    versionProps.load(new FileInputStream(versionPropsFile))
 
-    def verString = project.majorVersion + '.' + project.minorVersion + '.' + (project.patchVersion)
-    @TaskAction
-    def version() {
-        println verString
-    }
+def increment = 0
+
+def runTasks = gradle.startParameter.taskNames
+
+if (':base-android-library:assemble' in runTasks) {
+    increment = 1
 }
+
+def majorVersion = 2
+def minorVersion = 1
+def patch = versionProps['VERSION_PATCH'].toInteger() + increment
+
+def verString = majorVersion + '.' + minorVersion + '.' + patch
 
 task printVersion {
     println verString
@@ -40,6 +48,9 @@ task printVersion {
 android {
     compileSdkVersion 29
     buildToolsVersion '29.0.2'
+
+    versionProps['VERSION_PATCH'] = patch.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)    
 
     defaultConfig {
         minSdkVersion 21
