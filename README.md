@@ -31,7 +31,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.285'
+    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.287'
 }
 ```
 
