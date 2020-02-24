@@ -11,7 +11,7 @@
 
 -   [Title](#sdk-base-android)
 -   [Install](#install)
--   [Usage](#usage)
+-   [Usage](#how-to-use)
 -   [License](#license)
 -   [Credits](#credits)
 
@@ -35,7 +35,7 @@ dependencies {
 }
 ```
 
-## Usage
+## How to use
 
 Easily check for required permissions:
 
