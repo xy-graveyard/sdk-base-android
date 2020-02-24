@@ -12,6 +12,7 @@
 -   [Title](#sdk-base-android)
 -   [Install](#install)
 -   [Usage](#usage)
+-   [Contributing](#contributing)
 -   [License](#license)
 -   [Credits](#credits)
 
@@ -64,6 +65,10 @@ Logging:
  log.error(myException) //Any Handled Exceptions
  log.error("An error with a custom message")
 ```
+
+## Contributing
+
+Please note that any contributions must clear the `release` branch. 
 
 ## License
 
