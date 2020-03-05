@@ -11,7 +11,8 @@
 
 -   [Title](#sdk-base-android)
 -   [Install](#install)
--   [Usage](#how-to-use)
+-   [Usage](#usage)
+-   [Contributing](#contributing)
 -   [License](#license)
 -   [Credits](#credits)
 
@@ -31,7 +32,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.287'
+    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.288'
 }
 ```
 
@@ -64,6 +65,10 @@ Logging:
  log.error(myException) //Any Handled Exceptions
  log.error("An error with a custom message")
 ```
+
+## Contributing
+
+Please note that any contributions must clear the `release` branch. 
 
 ## License
 
