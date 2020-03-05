@@ -32,11 +32,11 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.287'
+    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.288'
 }
 ```
 
-## Usage
+## How to use
 
 Easily check for required permissions:
 
