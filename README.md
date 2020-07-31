@@ -22,19 +22,11 @@ An XY inspired utility framework for Android and Kotlin
 
 ## Install
 
-Using jitPack:
-
-```gradle
-allprojects {
-    repositories {
-        maven { url "https://jitpack.io" }
-    }
-}
-```
+Add as dependency in `build.gradle`
 
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-base-android:2.1.288'
+    api 'com.github.XYOracleNetwork:sdk-base-android:2.1.289'
 }
 ```
 
