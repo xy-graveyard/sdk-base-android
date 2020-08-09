@@ -31,7 +31,7 @@
 -keepattributes *Annotation*
 -keepattributes EnclosingMethod
 
--keep public class network.xyo.** { *; }
+-keep public class network.xyo.base.* { *; }
 
 -dontwarn java.lang.invoke.**
 
