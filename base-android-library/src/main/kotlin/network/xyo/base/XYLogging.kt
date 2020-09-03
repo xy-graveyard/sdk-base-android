@@ -9,7 +9,7 @@ open class XYLogging(private val source: String) {
         Log.e(info.sourceNameFromAny(source), message)
         val stackTrace = Thread.currentThread().stackTrace
         if (!stackTrace.isNullOrEmpty()) {
-            Log.e(info.sourceNameFromAny(source), stackTrace.contentToString().replace(", ", ",\r\n"))
+            Log.e(info.sourceNameFromAny(source), stackTrace.contentDeepToString().replace(", ", ",\r\n"))
         }
         if (reThrow) {
             throw RuntimeException()
@@ -27,7 +27,7 @@ open class XYLogging(private val source: String) {
         Log.e(info.sourceNameFromAny(source), info.classNameFromObject(ex))
         val stackTrace = ex.stackTrace
         if (!stackTrace.isNullOrEmpty()) {
-            Log.e(info.sourceNameFromAny(source), stackTrace.contentToString().replace(", ", ",\r\n"))
+            Log.e(info.sourceNameFromAny(source), stackTrace.contentDeepToString().replace(", ", ",\r\n"))
         }
 
         if (info.hasDebugger) {
