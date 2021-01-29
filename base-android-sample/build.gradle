@@ -1,14 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.3'
+    buildToolsVersion '30.0.3'
+
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "network.xyo.base.sample"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 20100
         versionName "2.1"
     }
@@ -50,14 +54,11 @@ buildscript {
         jcenter()
         google()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':base-android-library')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.0"
-    api 'org.jetbrains.kotlin:kotlin-reflect:1.4.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21"
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.4.21'
 }
