@@ -3,10 +3,7 @@ package network.xyo.base
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
-import android.os.Debug
-import com.jaredrummler.android.device.DeviceName
 import network.xyo.helpers.classNameFromObject
-import network.xyo.logging.XYLogging
 
 open class XYBase {
 
