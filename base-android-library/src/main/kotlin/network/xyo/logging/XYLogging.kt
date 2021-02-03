@@ -1,6 +1,7 @@
-package network.xyo.base
+package network.xyo.logging
 
 import android.util.Log
+import network.xyo.info.XYInfo
 
 /* We have everyone of these functions returning 'this' to allow for chaining */
 
