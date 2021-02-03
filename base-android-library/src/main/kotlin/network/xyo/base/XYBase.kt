@@ -3,7 +3,9 @@ package network.xyo.base
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
-import network.xyo.info.XYInfo
+import android.os.Debug
+import com.jaredrummler.android.device.DeviceName
+import network.xyo.helpers.classNameFromObject
 import network.xyo.logging.XYLogging
 
 open class XYBase {
@@ -24,7 +26,7 @@ open class XYBase {
         get() {
             synchronized(this) {
                 if (_log == null) {
-                    _log = XYLogging(className())
+                    _log = XYLogging(this)
                 }
                 return _log ?: throw NullPointerException()
             }
@@ -48,12 +50,5 @@ open class XYBase {
 
     fun className(): String {
         return classNameFromObject(this)
-    }
-
-    companion object : XYInfo() {
-
-        fun log(source: String): XYLogging {
-            return XYLogging(source)
-        }
     }
 }
