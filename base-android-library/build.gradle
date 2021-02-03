@@ -30,7 +30,7 @@ if (':base-android-library:assemble' in runTasks) {
 }
 
 def majorVersion = 4
-def minorVersion = 1
+def minorVersion = 2
 def patch = versionProps['VERSION_PATCH'].toInteger() + increment
 
 def verString = majorVersion + '.' + minorVersion + '.' + patch
