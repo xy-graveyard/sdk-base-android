@@ -1,4 +1,4 @@
-package network.xyo.logging
+package network.xyo.base
 
 import android.util.Log
 import network.xyo.helpers.classNameFromObject

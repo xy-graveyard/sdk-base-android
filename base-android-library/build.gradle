@@ -121,8 +121,8 @@ publishing {
 }
 
 bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
+    user = System.getenv('MAVEN_USER')
+    key = System.getenv('MAVEN_KEY')
     dryRun = false
     override = false
     publish = true

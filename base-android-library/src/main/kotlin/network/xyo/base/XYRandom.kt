@@ -1,6 +1,5 @@
-package network.xyo.random
+package network.xyo.base
 
-import network.xyo.base.XYBase
 import java.util.*
 
 class XYRandom : XYBase() {

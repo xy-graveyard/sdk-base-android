@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: pre-build
+        run: chmod +x gradlew
+      - name: install
+        run: ./gradlew install
+      - name: assemble
+        run: ./gradlew :base-android-library:assembleRelease
+      - name: print version
+        run: |
+          echo "##[set-output name=version;]$(gradle -q printVersion)"
+        id: release_version
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
+      - name: maven upload
+        env:
+          MAVEN_USER: ${{ secrets.BINTRAY_USER }}
+          MAVEN_KEY: ${{ secrets.BINTRAY_KEY }}
+        run: ./gradlew :base-android-library:mavenUpload
+      - name: get commit message
+        run: |
+          echo ::set-env name=commitmsg::$(git log --format=%B -n 1 ${{ github.event.after }})
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
+      - name: show commit message
+        run: echo $commitmsg
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.release_version.outputs.version }}
+          release_name: Release ${{ env.commitmsg }}
+          draft: true
+          prerelease: false
