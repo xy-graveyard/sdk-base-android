@@ -3,6 +3,8 @@ package network.xyo.base
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
+import network.xyo.info.XYInfo
+import network.xyo.logging.XYLogging
 
 open class XYBase {
 
