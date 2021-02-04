@@ -31,9 +31,9 @@ if (':base-android-library:assemble' in runTasks) {
 
 def majorVersion = 4
 def minorVersion = 2
-def patch = versionProps['VERSION_PATCH'].toInteger() + increment
+def patchVersion = versionProps['VERSION_PATCH'].toInteger() + increment
 
-def verString = majorVersion + '.' + minorVersion + '.' + patch
+def verString = majorVersion + '.' + minorVersion + '.' + patchVersion
 
 task printVersion {
     println verString
@@ -43,15 +43,15 @@ android {
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
 
-    versionProps['VERSION_PATCH'] = patch.toString()
+    versionProps['VERSION_PATCH'] = patchVersion.toString()
     versionProps.store(versionPropsFile.newWriter(), null)    
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
         defaultPublishConfig 'release'
-        versionCode project.majorVersion * 100000000 + project.minorVersion * 1000000 + project.patchVersion
-        versionName project.majorVersion + "." + project.minorVersion + "." + project.patchVersion
+        versionCode majorVersion * 100000000 + minorVersion * 1000000 + patchVersion
+        versionName majorVersion + "." + minorVersion + "." + patchVersion
     }
 
     lintOptions {
