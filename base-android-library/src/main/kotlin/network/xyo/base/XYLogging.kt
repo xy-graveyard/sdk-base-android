@@ -1,9 +1,6 @@
 package network.xyo.base
 
 import android.util.Log
-import network.xyo.helpers.classNameFromObject
-import network.xyo.helpers.currentThreadName
-import network.xyo.helpers.hasDebugger
 
 /* We have everyone of these functions returning 'this' to allow for chaining */
 

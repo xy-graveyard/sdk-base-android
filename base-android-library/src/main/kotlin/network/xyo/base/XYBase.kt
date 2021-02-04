@@ -3,7 +3,6 @@ package network.xyo.base
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
-import network.xyo.helpers.classNameFromObject
 
 open class XYBase {
 
