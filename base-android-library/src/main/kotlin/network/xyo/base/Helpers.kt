@@ -1,4 +1,4 @@
-package network.xyo.helpers
+package network.xyo.base
 
 import android.os.Debug
 import com.jaredrummler.android.device.DeviceName
