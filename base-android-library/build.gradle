@@ -151,8 +151,8 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.30'
-    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.4.30'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.31'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.4.31'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2-native-mt'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.jaredrummler:android-device-names:1.1.8'
