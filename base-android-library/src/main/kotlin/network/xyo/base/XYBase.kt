@@ -36,15 +36,11 @@ open class XYBase {
     fun getActivity(context: Context): Activity? {
         var contextToCheck = context
         while (contextToCheck is ContextWrapper) {
-            if (contextToCheck is Activity) {
-                return contextToCheck
+            when (contextToCheck) {
+                is Activity -> return contextToCheck
+                else -> contextToCheck = contextToCheck.baseContext
             }
-            contextToCheck = contextToCheck.baseContext
         }
         return null
-    }
-
-    fun className(): String {
-        return classNameFromObject(this)
     }
 }
