@@ -46,7 +46,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 31
-        defaultPublishConfig 'release'
     }
 
     buildTypes {
@@ -60,8 +59,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility "1.8"
-        targetCompatibility "1.8"
+        sourceCompatibility "11"
+        targetCompatibility "11"
         kotlinOptions {
             allWarningsAsErrors = true
         }

@@ -5,7 +5,7 @@ import android.util.Log
 /* We have everyone of these functions returning 'this' to allow for chaining */
 
 open class XYLogging(sourceAny: Any) {
-    private val source = classNameFromObject(sourceAny)
+    private val source = Helpers.classNameFromObject(sourceAny)
 
     open fun error(message: String, reThrow: Boolean): XYLogging {
         Log.e(source, message)
@@ -26,13 +26,13 @@ open class XYLogging(sourceAny: Any) {
     }
 
     open fun error(ex: Throwable, reThrow: Boolean): XYLogging {
-        Log.e(source, classNameFromObject(ex))
+        Log.e(source, Helpers.classNameFromObject(ex))
         val stackTrace = ex.stackTrace
         if (!stackTrace.isNullOrEmpty()) {
             Log.e(source, stackTrace.contentDeepToString().replace(", ", ",\r\n"))
         }
 
-        if (hasDebugger) {
+        if (Helpers.hasDebugger) {
             if (reThrow) {
                 throw RuntimeException(ex)
             }
@@ -41,18 +41,18 @@ open class XYLogging(sourceAny: Any) {
     }
 
     open fun error(message: String): XYLogging {
-        Log.e(source, "$message:${currentThreadName}")
+        Log.e(source, "$message:${Helpers.currentThreadName}")
         return this
     }
 
     //Normal information used for debugging.  Items should be less noisy than Extreme items
     open fun info(function: String, message: String): XYLogging {
-        Log.i(source, "$source:$function:$message [${currentThreadName}]")
+        Log.i(source, "$source:$function:$message [${Helpers.currentThreadName}]")
         return this
     }
 
     open fun info(message: String): XYLogging {
-        Log.i(source, "$message [${currentThreadName}]")
+        Log.i(source, "$message [${Helpers.currentThreadName}]")
         return this
     }
 
