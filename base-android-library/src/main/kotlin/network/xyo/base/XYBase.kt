@@ -30,7 +30,7 @@ open class XYBase {
 
     val className: String
         get() {
-            return Helpers.classNameFromObject(this)
+            return classNameFromObject(this)
         }
 
     fun getActivity(context: Context): Activity? {
