@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
 group = 'network.xyo'
@@ -10,7 +8,6 @@ buildscript {
     repositories {
         mavenCentral()
         mavenLocal()
-        jcenter()
         google()
     }
 }
@@ -50,8 +47,6 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         defaultPublishConfig 'release'
-        versionCode majorVersion * 100000000 + minorVersion * 1000000 + patchVersion
-        versionName majorVersion + "." + minorVersion + "." + patchVersion
     }
 
     lintOptions {
@@ -62,13 +57,11 @@ android {
 
     buildTypes {
         release {
-            debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             minifyEnabled false
-            debuggable true
         }
     }
 
@@ -120,38 +113,15 @@ publishing {
     }
 }
 
-bintray {
-    user = System.getenv('MAVEN_USER')
-    key = System.getenv('MAVEN_KEY')
-    dryRun = false
-    override = false
-    publish = true
-    pkg {
-        repo = 'xyo'
-        name = 'sdk-base-android'
-        userOrg = 'xyoraclenetwork'
-        licenses = ['LGPL-3.0']
-        desc = 'Android Base Classes'
-        vcsUrl = 'https://github.com/xyoraclenetwork/sdk-base-android.git'
-
-        version {
-            name = verString
-            vcsTag = verString
-        }
-    }
-    publications = ['Production']
-}
-
 repositories {
     mavenCentral()
     mavenLocal()
-    jcenter()
     google()
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2-native-mt'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.jaredrummler:android-device-names:1.1.8'
 }
